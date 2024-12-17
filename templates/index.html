@@ -4,6 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Fingerprint Data</title>
+    <script>
+        // Function to collect the required data
+        function getClientData() {
+            return {
+                browser: navigator.userAgent,  // Get browser information
+                screen_resolution: window.screen.width + 'x' + window.screen.height,  // Get screen resolution
+                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,  // Get the timezone
+                language: navigator.language || navigator.userLanguage,  // Get language preference
+                geolocation: "37.7749° N, 122.4194° W", // Example location; real data can be fetched using Geolocation API
+            };
+        }
+
+        // Function to display the data on the page
+        function displayClientData() {
+            const clientData = getClientData();
+            document.getElementById('browser').innerText = clientData.browser;
+            document.getElementById('screen_resolution').innerText = clientData.screen_resolution;
+            document.getElementById('timezone').innerText = clientData.timezone;
+            document.getElementById('language').innerText = clientData.language;
+            document.getElementById('geolocation').innerText = clientData.geolocation;
+        }
+
+        // Call the display function when the page is loaded
+        window.onload = displayClientData;
+    </script>
 </head>
 <body>
     <h1>User Fingerprint Data</h1>
@@ -14,7 +39,14 @@
             <li><strong>{{ key }}:</strong> {{ value }}</li>
         {% endfor %}
     </ul>
-    
+    <h2>Possible Data for Fingerprint Creation:</h2>
+    <ul>
+        <li><strong>Browser:</strong> <span id="browser">Loading...</span></li>
+        <li><strong>Screen Resolution:</strong> <span id="screen_resolution">Loading...</span></li>
+        <li><strong>Timezone:</strong> <span id="timezone">Loading...</span></li>
+        <li><strong>Language:</strong> <span id="language">Loading...</span></li>
+        <li><strong>Geolocation:</strong> <span id="geolocation">Loading...</span></li>
+    </ul>
     <h2>User Fingerprint:</h2>
     <p>{{ fingerprint }}</p>
     
