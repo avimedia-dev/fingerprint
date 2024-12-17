@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Fingerprint Data</title>
+</head>
+<body>
+    <h1>User Fingerprint Data</h1>
+    
+    <h2>Possible Data for Fingerprint Creation:</h2>
+    <ul>
+        {% for key, value in user_data.items() %}
+            <li><strong>{{ key }}:</strong> {{ value }}</li>
+        {% endfor %}
+    </ul>
+    
+    <h2>User Fingerprint:</h2>
+    <p>{{ fingerprint }}</p>
+    
+</body>
+</html>
